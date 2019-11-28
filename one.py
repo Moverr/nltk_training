@@ -16,4 +16,10 @@ for w in words:
         filtered_sentence.append(w)
     
 
+#  stop words are words that do not matter in data analysis in our ML 
+
 print("Filtered Words \n {}".format(filtered_sentence))
+
+print("\n ONe line Exploaration fo r the loop")
+
+# filtered_sentence = [w for w in words if not w in stop_words ]
