@@ -53,7 +53,8 @@ def process_content():
     for i in tokenized:
         word = nltk.word_tokenize(i)
         tagged  = nltk.pos_tag(word)
-        # print("Tagged {}".format(tagged))
+        
+        chunkGram = r"""chunk: {<RB.?>*<VB.?>*<NNP><NN>?} """
 
    
 
