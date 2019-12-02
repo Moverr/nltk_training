@@ -54,7 +54,7 @@ def process_content():
         word = nltk.word_tokenize(i)
         tagged  = nltk.pos_tag(word)
         
-        namedEnt = nltk.ne_chunk(tagged)
+        namedEnt = nltk.ne_chunk(tagged,binary=True)
 
         namedEnt.draw()
 
