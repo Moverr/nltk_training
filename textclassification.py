@@ -12,7 +12,7 @@ documents = [(list(movie_reviews.words(fileid)),category)
 
 
 random.shuffle(documents)
-print(documents[1])
+# print(documents[1])
 
 
 all_words = []
