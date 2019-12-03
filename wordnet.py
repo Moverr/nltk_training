@@ -22,4 +22,11 @@ for syn  in wordnet.synsets("good"):
     for l in syn.lemmas():
         synonyms.append(l.name())
         if l.antonyms():
-            antonyms.append(l.antonyms()[0].name)
+            antonyms.append(l.antonyms()[0].name())
+
+
+print("Synonms \n")
+print(set(synonyms))
+
+print("\n Antonyns  \n")
+print(set(antonyms))
