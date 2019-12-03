@@ -11,3 +11,5 @@ print(syns[0].lemmas()[0].name())
 # Definition 
 print(syns[0].definition())
 
+# Examples 
+print(syns[0].examples())
