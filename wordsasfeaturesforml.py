@@ -24,11 +24,19 @@ stop_words = set(stopwords.words("english"))
 
 all_words = []
 for w in movie_reviews.words():
-    if w not in stop_words:
-        all_words.append(w.lower())
+    all_words.append(w.lower())
 
 all_words  = nltk.FreqDist(all_words)
-print(all_words.most_common(15))
+
+word_features = list(all_words.keys())[:3000]
 
 
-print (all_words["stupid"])
+def find_features(document):
+    words = set(documents)
+    features  = []
+    for w in word_features:
+        features[w] = (w in words)
+    return features
+
+
+ 
