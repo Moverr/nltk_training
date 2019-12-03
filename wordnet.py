@@ -34,3 +34,10 @@ print(set(antonyms))
 
 w1 = wordnet.synset("ship.n.01")
 w2 = wordnet.synset("boat.n.01")
+
+w1 = wordnet.synset("car.n.01")
+w2 = wordnet.synset("truck.n.01")
+
+
+print("Similarity \n")
+print(w1.wup_similarity(w2))
