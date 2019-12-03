@@ -30,3 +30,7 @@ print(set(synonyms))
 
 print("\n Antonyns  \n")
 print(set(antonyms))
+
+
+w1 = wordnet.synset("ship.n.01")
+w2 = wordnet.synset("boat.n.01")
