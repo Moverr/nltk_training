@@ -17,18 +17,24 @@ documents = [(list(movie_reviews.words(fileid)),category)
 
 documents = []
 
+categories = []
 for category in movie_reviews.categories():
+    categories.append(category)
     for fileid in movie_reviews.fileids(category):
         # x = list(movie_reviews.words(fileid)),category
-        x = list(movie_reviews.words(fileid)),category
+        x = list(movie_reviews.words(fileid)),"mover"
         documents.append(x) 
 
 
 
 random.shuffle(documents)
 
+print("Categories \n")
+print(set(categories))
+
 print("::::::::::::::::::::::::::::::::::::::::::::::::\n")
 print(documents[:1])
+
 
 all_words = []
 for w in movie_reviews.words():
@@ -51,7 +57,7 @@ def find_features(document):
 # print((find_features(movie_reviews.words('neg/cv000_29416.txt'))))
 
 print("\n PASS \n ")
-# featuresets = [(find_features(rev),category) for (rev,category) in documents ]
-# print(featuresets)
+featuresets = [(find_features(rev),category) for (rev,category) in documents ]
+print(featuresets)
 
  
