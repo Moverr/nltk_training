@@ -49,6 +49,9 @@ word_features = list(all_words.keys())[:3000]
 wordss = ['many', '*', 'friends', ',', 'family', 'members', ',', 'and', 'acquaintances', 'whose', 'lives', 'were', 'touched', 'by', 'this', 'young', 'woman', 'and', 'her', 'writings', '.', 'winner', 'of', 'the', 'last', 'year', "'", 's', 'academy', 'award', 'for', 'best', 'documentary', 'i', 'relish', 'those', 'rare', 'opportunities', 'when', 'a', 'talented', 'screenwriter', 'can', 'make', 'me', 'feel', 'like', 'a', 'fool', '.', 'i', 'spent', 'the', 'first', 'hour', 'of', 'forces', 'of', 'nature', 'slowly', 'stewing', 'over', 'its', 'grim', 'attitude', 'towards', 'marriage', ',', 'grousing', 'to', 'myself', 'about', 'its', 'transparently', 'planes', ',', 'trains']
 
 
+print("LENGTH :::-------------------")
+print(len(wordss))
+
 def find_features(document):
     words = set(wordss)
     features = {}
@@ -58,8 +61,12 @@ def find_features(document):
 
 
 print("Pass and Go \n")
-print((find_features(movie_reviews.words('neg/cv000_29416.txt'))))
+# print((find_features(movie_reviews.words('neg/cv000_29416.txt'))))
 
 # print("\n PASS \n ")
-# featuresets = [(find_features(rev),category) for (rev,category) in documents ]
-# print(featuresets)
+featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
+print(featuresets)
+
+
+train_set = wordss[:35]
+test_set = words[35:]
