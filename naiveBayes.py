@@ -29,13 +29,6 @@ for category in movie_reviews.categories():
 
 random.shuffle(documents)
 
-print("Categories \n")
-# print(documents)
-
-print("::::::::::::::::::::::::::::::::::::::::::::::::\n")
-# print(documents[:1])
-
-
 all_words = []
 for w in movie_reviews.words():
     all_words.append(w.lower())
@@ -46,8 +39,10 @@ all_words = nltk.FreqDist(all_words)
 
 word_features = list(all_words.keys())[:3000]
 
-wordss = ['many', '*', 'friends', ',', 'family', 'members', ',', 'and', 'acquaintances', 'whose', 'lives', 'were', 'touched', 'by', 'this', 'young', 'woman', 'and', 'her', 'writings', '.', 'winner', 'of', 'the', 'last', 'year', "'", 's', 'academy', 'award', 'for', 'best', 'documentary', 'i', 'relish', 'those', 'rare', 'opportunities', 'when', 'a', 'talented', 'screenwriter', 'can', 'make', 'me', 'feel', 'like', 'a', 'fool', '.', 'i', 'spent', 'the', 'first', 'hour', 'of', 'forces', 'of', 'nature', 'slowly', 'stewing', 'over', 'its', 'grim', 'attitude', 'towards', 'marriage', ',', 'grousing', 'to', 'myself', 'about', 'its', 'transparently', 'planes', ',', 'trains']
- 
+wordss = ['many', '*', 'friends', ',', 'family', 'members', ',', 'and', 'acquaintances', 'whose', 'lives', 'were', 'touched', 'by', 'this', 'young', 'woman', 'and', 'her', 'writings', '.', 'winner', 'of', 'the', 'last', 'year', "'", 's', 'academy', 'award', 'for', 'best', 'documentary', 'i', 'relish', 'those', 'rare', 'opportunities',
+          'when', 'a', 'talented', 'screenwriter', 'can', 'make', 'me', 'feel', 'like', 'a', 'fool', '.', 'i', 'spent', 'the', 'first', 'hour', 'of', 'forces', 'of', 'nature', 'slowly', 'stewing', 'over', 'its', 'grim', 'attitude', 'towards', 'marriage', ',', 'grousing', 'to', 'myself', 'about', 'its', 'transparently', 'planes', ',', 'trains']
+
+
 def find_features(document):
     words = set(wordss)
     features = {}
@@ -56,8 +51,8 @@ def find_features(document):
     return features
 
 
- 
-featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
+featuresets = [(find_features(rev), category)
+               for (rev, category) in documents[:1]]
 print(featuresets)
 
 
