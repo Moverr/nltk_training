@@ -20,5 +20,17 @@ all_words = [w.lower() for w in movie_reviews.words()]
 
 all_words = nltk.FreqDist(all_words)
 
-print("All WOrds \n ")
-print(all_words[:200])
+# print("All WOrds \n ")
+# print(all_words)
+
+word_features = list(all_words.keys())[:3000]
+
+
+print("Word Features \n ")
+print(set(word_features))
+
+def find_features(document):
+    words = set(document)
+    features =  []
+    for w in words:
+        pass
