@@ -32,5 +32,7 @@ print(set(word_features))
 def find_features(document):
     words = set(document)
     features =  []
-    for w in words:
-        pass
+    for w in word_features:
+        features[w] = (w in words)
+        
+    return features
