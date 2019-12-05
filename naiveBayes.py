@@ -35,7 +35,7 @@ def find_features(document):
     for w in word_features:
         features[w] = (w in words)
 
-    return featuress
+    return features
 
 
 # print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
