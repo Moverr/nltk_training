@@ -31,23 +31,35 @@ words = ""
 
 for category in political_content.keys():
     for content in  political_content[category]:
-        words +=   content.lower()
+        word_features.append((content.split(" "),category))
 
-word_features  = words.split(" ")
+# word_features  = words.split(" ")
 
 print(word_features)
 
-def find_features(document):
-    words = set(document)
-    features =  {}
-    for w in word_features:
-        features[w] = (w in words)
+# def find_features(document):
+#     words = set(document)
+#     features =  {}
+#     for w in word_features:
+#         features[w] = (w in words)
 
-    return features
+#     return features
 
 
-# contentx = "Uganda  president Museveni is going to stand for the 2021 elections "
-contentx = "Uganda Politician Bobiwine has been elected the president oof uganda in 2019 "
-# print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))s
-print((find_features(contentx.lower())))
+# # contentx = "Uganda  president Museveni is going to stand for the 2021 elections "
+# contentx = "Uganda Politician Bobiwine has been elected the president oof uganda in 2019 "
+# # print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))s
+# # print((find_features(contentx.lower())))
  
+# featuresets = [(find_features(rev)) for (rev) in political_content ]
+
+# training_set  =featuresets[:30]
+# testing_set = featuresets[30:]
+
+
+# print(training_set)
+# # classifier = nltk.NaiveBayesClassifier.train(training_set)
+# # print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,testing_set))* 100 )
+
+
+# # print(featuresets)
