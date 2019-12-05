@@ -18,6 +18,7 @@ all_words = [w.lower() for w in movie_reviews.words()]
 # for w in movie_reviews.words():
 #     all_words.append(w.lower())git b
 
+all_words = nltk.FreqDist(all_words)
 
 print("All WOrds \n ")
 print(all_words[:200])
