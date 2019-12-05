@@ -26,28 +26,28 @@ political_content["true"] = [
 
 
 # print(political_content)
-documents = []   
+word_features = []   
 words = "" 
 
 for category in political_content.keys():
     for content in  political_content[category]:
-        words +=   content
+        words +=   content.lower()
 
-documents  = words.split(" ")
+word_features  = words.split(" ")
 
-print(documents)
+print(word_features)
 
-# documents.append(words.split(" "))
+def find_features(document):
+    words = set(document)
+    features =  {}
+    for w in word_features:
+        features[w] = (w in words)
 
-
-# print(documents)
-# (list(movie_reviews.words(fileid)),category)
-#              for category in movie_reviews.categories()
-#              for fileid in movie_reviews.fileids(category)
-    
-
-
-# random.shuffle(documents)
+    return features
 
 
-# print(documents[0])
+# contentx = "Uganda  president Museveni is going to stand for the 2021 elections "
+contentx = "Uganda Politician Bobiwine has been elected the president oof uganda in 2019 "
+# print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))s
+print((find_features(contentx.lower())))
+ 
