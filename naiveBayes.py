@@ -50,8 +50,7 @@ this will depend on the % accuracy of the classifier in this game ::
 '''
 #  Labeled dataset 
 featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
-print(featurese
-ts)
+print(featuresets)
 
 training_set  =featuresets[:1900]
 testing_set = featuresets[1900:]
