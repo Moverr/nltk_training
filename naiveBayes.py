@@ -42,6 +42,12 @@ def find_features(document):
 
 
 
+# Every word can have different datasets :: 
+'''
+// we intend to have a set of words against a forest of words. but if we find a percentage of those words in the forest of words. 
+then we can categorize this as a pass or a fail, depending on ML ..  level of tolerance in a text. 
+this will depend on the % accuracy of the classifier in this game :: 
+'''
 #  Labeled dataset 
 featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
 print(featuresets)
