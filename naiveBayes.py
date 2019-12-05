@@ -13,7 +13,11 @@ random.shuffle(documents)
 print(documents[1])
 
 
-all_words = []
+all_words = [w.lower() for w in movie_reviews.words()]
 
-for w in movie_reviews.words():
-    all_words.append(w.lower())
+# for w in movie_reviews.words():
+#     all_words.append(w.lower())
+
+
+print("All WOrds \n ")
+print(all_words[:200])
