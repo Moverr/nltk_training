@@ -26,6 +26,16 @@ political_content["true"] = [
 
 
 print(political_content)
+documents = []    
+for category in political_content.keys():
+    print(category)
+
+# (list(movie_reviews.words(fileid)),category)
+#              for category in movie_reviews.categories()
+#              for fileid in movie_reviews.fileids(category)
+    
+
+
 # random.shuffle(documents)
 
 
