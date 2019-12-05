@@ -11,3 +11,9 @@ documents = [(list(movie_reviews.words(fileid)),category)
 random.shuffle(documents)
 
 print(documents[1])
+
+
+all_words = []
+
+for w in movie_reviews.words():
+    all_words.append(w.lower())
