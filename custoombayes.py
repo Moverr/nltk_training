@@ -45,9 +45,19 @@ for category in political_content.keys():
 
 random.shuffle(documents)
 
+all_words = nltk.FreqDist(all_words)
 
 
 print(all_words)
+
+word_features = list(all_words.keys())[:3000]
+
+
+print("Word Features \n ")
+print(set(word_features))
+
+
+
 
 # def find_features(document):
 #     words = set(document)
