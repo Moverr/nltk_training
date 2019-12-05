@@ -16,7 +16,7 @@ print(documents[1])
 all_words = [w.lower() for w in movie_reviews.words()]
 
 # for w in movie_reviews.words():
-#     all_words.append(w.lower())
+#     all_words.append(w.lower())git b
 
 
 print("All WOrds \n ")
