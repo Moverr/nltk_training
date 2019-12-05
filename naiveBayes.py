@@ -31,8 +31,11 @@ print(set(word_features))
 
 def find_features(document):
     words = set(document)
-    features =  []
+    features =  {}
     for w in word_features:
         features[w] = (w in words)
-        
+
     return features
+
+
+print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
