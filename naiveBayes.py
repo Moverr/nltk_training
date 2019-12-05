@@ -54,3 +54,5 @@ print(featuresets)
 
 training_set  =featuresets[:1900]
 testing_set = featuresets[1900:]
+
+#posterior = prioer occurences  * likelihood / evidence = [positive,negative]
