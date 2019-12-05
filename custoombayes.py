@@ -26,16 +26,28 @@ political_content["true"] = [
 
 
 # print(political_content)
-word_features = []   
+documents = []   
 words = "" 
 
+all_words =[]
+# // [w.lower() for w in movie_reviews.words()]
+
+x = []
 for category in political_content.keys():
+    
     for content in  political_content[category]:
-        word_features.append((content.split(" "),category))
+        documents.append((content.split(" "),category))
+        x += content.split(" ") 
+    all_words = x
 
 # word_features  = words.split(" ")
 
-print(word_features)
+
+random.shuffle(documents)
+
+
+
+print(all_words)
 
 # def find_features(document):
 #     words = set(document)
