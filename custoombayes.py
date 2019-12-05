@@ -28,7 +28,8 @@ political_content["true"] = [
 print(political_content)
 documents = []    
 for category in political_content.keys():
-    print(category)
+    for content in  political_content[category]:
+        print(content)
 
 # (list(movie_reviews.words(fileid)),category)
 #              for category in movie_reviews.categories()
