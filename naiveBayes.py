@@ -26,8 +26,8 @@ all_words = nltk.FreqDist(all_words)
 word_features = list(all_words.keys())[:3000]
 
 
-print("Word Features \n ")
-print(set(word_features))
+# print("Word Features \n ")
+# print(set(word_features))
 
 def find_features(document):
     words = set(document)
@@ -38,4 +38,8 @@ def find_features(document):
     return features
 
 
-print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
+# print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
+
+
+featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
+# print(featuresets)
