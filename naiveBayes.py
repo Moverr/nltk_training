@@ -10,7 +10,7 @@ documents = [(list(movie_reviews.words(fileid)),category)
 
 random.shuffle(documents)
 
-print(documents[1])
+# print(documents[1])
 
 
 all_words = [w.lower() for w in movie_reviews.words()]
@@ -35,11 +35,13 @@ def find_features(document):
     for w in word_features:
         features[w] = (w in words)
 
-    return features
+    return featuress
 
 
 # print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
 
 
+
+#  Labeled dataset 
 featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
-# print(featuresets)
+print(featuresets)
