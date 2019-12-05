@@ -20,7 +20,9 @@ political_content["false"] = [
 political_content["true"] = [
     "Uganda  president Museveni is going to stand for the 2021 elections ",
     "Uganda  politician bobiwine intends to stand for presidenet in 2021 ",
-    "Uganda president museveni has launched a campain against corruption "  
+    "Uganda president museveni has launched a campain against corruption " ,
+      "President Museveni has  stepped aside to let bobiwine be the next president of Uganda ",
+    "President Museveni has been found guilty of fraud, he has been sentenced to jail 39 years in prison "  
 ]
 
 
@@ -73,12 +75,25 @@ print(featuresets)
 
 
 
-training_set  =featuresets[:45]
-testing_set = featuresets[45:]
+training_set  =featuresets[0:6]
+testing_set = featuresets[6:35]
+
+
 
 
 classifier = nltk.NaiveBayesClassifier.train(training_set)
-print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,training_set))* 100 )
+print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,testing_set))* 100 )
+
+# print("---------------\n")
+# print("---------------\n")
+
+# print(training_set)
+
+
+print("---------------\n")
+
+
+
 
 
 
