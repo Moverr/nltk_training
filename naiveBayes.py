@@ -25,39 +25,40 @@ all_words = nltk.FreqDist(all_words)
 
 word_features = list(all_words.keys())[:3000]
 
+print(word_features)
 
-# print("Word Features \n ")
-# print(set(word_features))
+# # print("Word Features \n ")
+# # print(set(word_features))
 
-def find_features(document):
-    words = set(document)
-    features =  {}
-    for w in word_features:
-        features[w] = (w in words)
+# def find_features(document):
+#     words = set(document)
+#     features =  {}
+#     for w in word_features:
+#         features[w] = (w in words)
 
-    return features
-
-
-# print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
+#     return features
 
 
+# # print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
 
-# Every word can have different datasets :: 
-'''
-// we intend to have a set of words against a forest of words. but if we find a percentage of those words in the forest of words. 
-then we can categorize this as a pass or a fail, depending on ML ..  level of tolerance in a text. 
-this will depend on the % accuracy of the classifier in this game :: 
-'''
-#  Labeled dataset 
-featuresets = [(find_features(rev),category) for (rev,category) in documents ]
-# print(featuresets)
 
-training_set  =featuresets[:1900]
-testing_set = featuresets[1900:]
 
-#posterior = prioer occurences  * likelihood / evidence = [positive,negative]
+# # Every word can have different datasets :: 
+# '''
+# // we intend to have a set of words against a forest of words. but if we find a percentage of those words in the forest of words. 
+# then we can categorize this as a pass or a fail, depending on ML ..  level of tolerance in a text. 
+# this will depend on the % accuracy of the classifier in this game :: 
+# '''
+# #  Labeled dataset 
+# featuresets = [(find_features(rev),category) for (rev,category) in documents ]
+# # print(featuresets)
 
-classifier = nltk.NaiveBayesClassifier.train(training_set)
-print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,testing_set))* 100 )
+# training_set  =featuresets[:1900]
+# testing_set = featuresets[1900:]
+
+# #posterior = prioer occurences  * likelihood / evidence = [positive,negative]
+
+# classifier = nltk.NaiveBayesClassifier.train(training_set)
+# print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,testing_set))* 100 )
 
  
