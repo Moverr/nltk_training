@@ -80,10 +80,12 @@ testing_set = featuresets[6:35]
 
 
 
+#posterior = prioer occurences  * likelihood / evidence = [positive,negative]
 
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,testing_set))* 100 )
 
+classifier.show_most_informative_features(15)
 # print("---------------\n")
 # print("---------------\n")
 
