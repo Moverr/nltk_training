@@ -100,8 +100,8 @@ featuresets = [(find_features(rev), category) for (rev, category) in documents]
 print(featuresets)
 
 
-training_set = featuresets[0:35]
-testing_set = featuresets[6:35]
+training_set = featuresets[:14]
+testing_set = featuresets[0:]
 
 print('----------------------Training Set---------------------------------  \n')
 print(training_set)
