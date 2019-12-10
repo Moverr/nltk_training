@@ -153,7 +153,18 @@ NuSVC_classifier = SklearnClassifier(NuSVC())
 NuSVC_classifier.train(training_set)
 print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
  
+
  
 print("---------------\n")
 
- 
+
+from nltk.classify import ClassifierI
+from statistics import mode
+
+
+class VoteClassifier(ClassifierI):
+    # List of classifiers passsed to this 
+    def __init__(self,*classifiers):
+        self._classifiers = classifiers
+    def classify():
+        pass
