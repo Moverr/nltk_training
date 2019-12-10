@@ -138,10 +138,34 @@ print("MNB_Classifier Algo Accuracy: ",
 
 BernoulliNB = SklearnClassifier(BernoulliNB())
 BernoulliNB.train(training_set)
-print("BernoulliNB Algo Accuracy: ",
-      (nltk.classify.accuracy(BernoulliNB, testing_set)) * 100)
+print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, testing_set)) * 100)
 
 
+
+
+# LogisticRegression, SGDClassifier
+# SVC, LinearSVC,NuSVC
+
+LogisticRegression = SklearnClassifier(LogisticRegression())
+LogisticRegression.train(training_set)
+print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression, testing_set)) * 100)
+
+SGDClassifier = SklearnClassifier(SGDClassifier())
+SGDClassifier.train(training_set)
+print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier, testing_set)) * 100)
+
+SVC = SklearnClassifier(SVC())
+SVC.train(training_set)
+print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC, testing_set)) * 100)
+
+LinearSVC = SklearnClassifier(LinearSVC())
+LinearSVC.train(training_set)
+print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC, testing_set)) * 100)
+
+NuSVC = SklearnClassifier(NuSVC())
+NuSVC.train(training_set)
+print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC, testing_set)) * 100)
+ 
 
 # MNB_Classifier.show_most_informative_features(50)
 
