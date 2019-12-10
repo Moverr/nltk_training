@@ -115,7 +115,8 @@ print(training_set)
 
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
-
+from sklearn.linear_model import  LogisticRegression, SGDClassifier
+from sklearn.svm import SVC, LinearSVC,NuSVC
 
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 print("Original Naive Bayes Algo Accuracy: ",
@@ -126,8 +127,23 @@ classifier.show_most_informative_features(50)
 MNB_Classifier = SklearnClassifier(MultinomialNB())
 MNB_Classifier.train(training_set)
 print("MNB_Classifier Algo Accuracy: ",
-      (nltk.classify.accuracy(classifier, testing_set)) * 100)
+      (nltk.classify.accuracy(MNB_Classifier, testing_set)) * 100)
 
+
+# GaussianNB = SklearnClassifier(GaussianNB())
+# GaussianNB.train(training_set)
+# print("GaussianNB Algo Accuracy: ",
+#       (nltk.classify.accuracy(GaussianNB, testing_set)) * 100)
+
+
+BernoulliNB = SklearnClassifier(BernoulliNB())
+BernoulliNB.train(training_set)
+print("BernoulliNB Algo Accuracy: ",
+      (nltk.classify.accuracy(BernoulliNB, testing_set)) * 100)
+
+
+
+# MNB_Classifier.show_most_informative_features(50)
 
 #  wrapper to include algorigthms within the nltk 
 
