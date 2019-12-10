@@ -179,3 +179,7 @@ class VoteClassifier(ClassifierI):
             votes.append(v)
         choice_votes = votes.count(mode(votes))
         conf = choice_votes/len(votes)
+        return conf
+
+
+voted_classifier = VoteClassifier()
