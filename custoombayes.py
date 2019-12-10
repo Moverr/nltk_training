@@ -146,25 +146,25 @@ print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, t
 # LogisticRegression, SGDClassifier
 # SVC, LinearSVC,NuSVC
 
-LogisticRegression = SklearnClassifier(LogisticRegression())
-LogisticRegression.train(training_set)
-print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression, testing_set)) * 100)
+LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+LogisticRegression_classifier.train(training_set)
+print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, testing_set)) * 100)
 
-SGDClassifier = SklearnClassifier(SGDClassifier())
-SGDClassifier.train(training_set)
-print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier, testing_set)) * 100)
+SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
+SGDClassifier_classifier.train(training_set)
+print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, testing_set)) * 100)
 
-SVC = SklearnClassifier(SVC())
-SVC.train(training_set)
-print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC, testing_set)) * 100)
+SVC_classifier = SklearnClassifier(SVC())
+SVC_classifier.train(training_set)
+print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, testing_set)) * 100)
 
-LinearSVC = SklearnClassifier(LinearSVC())
-LinearSVC.train(training_set)
-print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC, testing_set)) * 100)
+LinearSVC_classifier = SklearnClassifier(LinearSVC())
+LinearSVC_classifier.train(training_set)
+print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, testing_set)) * 100)
 
-NuSVC = SklearnClassifier(NuSVC())
-NuSVC.train(training_set)
-print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC, testing_set)) * 100)
+NuSVC_classifier = SklearnClassifier(NuSVC())
+NuSVC_classifier.train(training_set)
+print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
  
 
 # MNB_Classifier.show_most_informative_features(50)
