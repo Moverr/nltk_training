@@ -104,17 +104,38 @@ featuresets = [(find_features(rev), category) for (rev, category) in documents]
 print(featuresets)
 
 
-training_set = featuresets[0:6]
+training_set = featuresets[0:12]
 testing_set = featuresets[6:35]
+
+print('----------------------Training Set---------------------------------  \n')
+print(training_set)
 
 
 # posterior = prioer occurences  * likelihood / evidence = [positive,negative]
 
+from nltk.classify.scikitlearn import SklearnClassifier
+from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
+
+
 classifier = nltk.NaiveBayesClassifier.train(training_set)
-print("Naive Bayes Algo Accuracy: ",
+print("Original Naive Bayes Algo Accuracy: ",
       (nltk.classify.accuracy(classifier, testing_set)) * 100)
 
-classifier.show_most_informative_features(15)
+classifier.show_most_informative_features(50)
+
+MNB_Classifier = SklearnClassifier(MultinomialNB())
+MNB_Classifier.train(training_set)
+print("MNB_Classifier Algo Accuracy: ",
+      (nltk.classify.accuracy(classifier, testing_set)) * 100)
+
+
+#  wrapper to include algorigthms within the nltk 
+
+# from sklearn.model_selection import train_test_split
+# x_train, x_test, y_train, y_test = train_test_split(testing_set,testing_set,random_state = 0)
+
+
+
 # print("---------------\n")
 # print("---------------\n")
 
