@@ -182,4 +182,4 @@ class VoteClassifier(ClassifierI):
         return conf
 
 
-voted_classifier = VoteClassifier()
+voted_classifier = VoteClassifier(classifier,MNB_Classifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,SVC_classifier,NuSVC_classifier)
