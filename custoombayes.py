@@ -183,3 +183,6 @@ class VoteClassifier(ClassifierI):
 
 
 voted_classifier = VoteClassifier(classifier,MNB_Classifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,SVC_classifier,NuSVC_classifier)
+print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, testing_set)) * 100)
+
+print("Classification : ",voted_classifier.classify(testing_set[0][0]))
