@@ -1,14 +1,12 @@
 import nltk
 import random
 from nltk.corpus import movie_reviews
+from nltk.classify.scikitlearn import SklearnClassifier
+from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
+from sklearn.linear_model import  LogisticRegression, SGDClassifier
+from sklearn.svm import SVC, LinearSVC,NuSVC
 
-
-# documents = [(list(movie_reviews.words(fileid)),category)
-#              for category in movie_reviews.categories()
-#              for fileid in movie_reviews.fileids(category)
-#         ]
-
-
+ 
 political_content = {}
 political_content["false"] = [
     "Popular singer and Ugandan presidential challenger Bobi Wine (Robert Kyagulanyi) this week spoke out in defense of LGBT rights, an issue that divides Ugandan voters. JOHANNESBURG, South Africa – Kyadondo East Member of Parliament Robert Kyagulanyi alias Bobi Wine’s remarks about homosexuals has drawn mixed views from Ugandans on social media0."
@@ -78,7 +76,7 @@ random.shuffle(documents)
 
 all_words = nltk.FreqDist(all_words)
 
-
+# Print all workds 
 print(all_words)
 
 word_features = list(all_words.keys())[:3000]
@@ -97,14 +95,12 @@ def find_features(document):
     return features
 
 
-# print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))
-
+ 
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
-
 print(featuresets)
 
 
-training_set = featuresets[0:12]
+training_set = featuresets[0:35]
 testing_set = featuresets[6:35]
 
 print('----------------------Training Set---------------------------------  \n')
@@ -113,10 +109,6 @@ print(training_set)
 
 # posterior = prioer occurences  * likelihood / evidence = [positive,negative]
 
-from nltk.classify.scikitlearn import SklearnClassifier
-from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
-from sklearn.linear_model import  LogisticRegression, SGDClassifier
-from sklearn.svm import SVC, LinearSVC,NuSVC
 
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 print("Original Naive Bayes Algo Accuracy: ",
@@ -140,12 +132,7 @@ BernoulliNB = SklearnClassifier(BernoulliNB())
 BernoulliNB.train(training_set)
 print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, testing_set)) * 100)
 
-
-
-
-# LogisticRegression, SGDClassifier
-# SVC, LinearSVC,NuSVC
-
+ 
 LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
 LogisticRegression_classifier.train(training_set)
 print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, testing_set)) * 100)
@@ -166,48 +153,7 @@ NuSVC_classifier = SklearnClassifier(NuSVC())
 NuSVC_classifier.train(training_set)
 print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
  
-
-# MNB_Classifier.show_most_informative_features(50)
-
-#  wrapper to include algorigthms within the nltk 
-
-# from sklearn.model_selection import train_test_split
-# x_train, x_test, y_train, y_test = train_test_split(testing_set,testing_set,random_state = 0)
-
-
-
-# print("---------------\n")
-# print("---------------\n")
-
-# print(training_set)
-
-
+ 
 print("---------------\n")
 
-
-# def find_features(document):
-#     words = set(document)
-#     features =  {}
-#     for w in word_features:
-#         features[w] = (w in words)
-
-#     return features
-
-
-# # contentx = "Uganda  president Museveni is going to stand for the 2021 elections "
-# contentx = "Uganda Politician Bobiwine has been elected the president oof uganda in 2019 "
-# # print((find_features(movie_reviews.words("neg/cv000_29416.txt"))))s
-# # print((find_features(contentx.lower())))
-
-# featuresets = [(find_features(rev)) for (rev) in political_content ]
-
-# training_set  =featuresets[:30]
-# testing_set = featuresets[30:]
-
-
-# print(training_set)
-# # classifier = nltk.NaiveBayesClassifier.train(training_set)
-# # print("Naive Bayes Algo Accuracy: ",(nltk.classify.accuracy(classifier,testing_set))* 100 )
-
-
-# # print(featuresets)
+ 
