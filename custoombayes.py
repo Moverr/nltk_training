@@ -142,9 +142,17 @@ class VoteClassifier(ClassifierI):
         choice_votes = votes.count(mode(votes))
         conf = choice_votes/len(votes)
         return conf
+    def predict(self,text):
+        pass
 
 
 voted_classifier = VoteClassifier(classifier,MNB_Classifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,SVC_classifier,NuSVC_classifier)
 print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, testing_set)) * 100)
+
+text_to_predict = "Museveni has been overthrown in Uganda "
+text_to_predict = text_to_predict.split(" ")
+# print("Classification : ",voted_classifier.classify(testing_set[0][0]))
+print("LAST FEATURES \n")
+print(testing_set[0][0])
 
 print("Classification : ",voted_classifier.classify(testing_set[0][0]))
