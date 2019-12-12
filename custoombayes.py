@@ -54,12 +54,16 @@ def find_features(document):
 
 
  
+
+print("------- FEATURE SETS ::::: ------------------- ") 
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 print(featuresets)
 
 
+print("------- LENGTH ::::: ------------------- ")
+print(len(featuresets))
 training_set = featuresets[:14]
-testing_set = featuresets[0:]
+testing_set = featuresets[0:14]
 
 print('----------------------Training Set---------------------------------  \n')
 print(training_set)
