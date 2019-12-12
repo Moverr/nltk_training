@@ -32,7 +32,7 @@ with open('data.json') as json_file:
 #     "Bobi Wine, Uganda's pop star-turned-opposition leader, said on Monday he will challenge longtime President Yoweri Museveni in elections set for 2021."
 #     + "\"I will challenge President Museveni on behalf of the people,' he said in an interview with The Associated Press.\""
 #     + "But Wine, whose real name is Kyagulanyi Ssentamu, said he was concerned about his safety after surviving what he believes was an attempt on his life last August when his driver was shot dead in his car following an incident in which protesters threw stones at the president's motorcade.",
-#     "Uganda  politician bobiwine intends to stand for presidenet in 2021 ",
+    # "Uganda  politician bobiwine intends to stand for presidenet in 2021 ",
 
 #     " The popular musician-turned-parliamentarian was attending a rally for Kassiano Wadri for the Arua by-election in northen Uganda."
 #     + "Bobi Wine says, government forces ambushed, arrested and tortured him. On his Facebook page, Bobi later shared his ordeal."
