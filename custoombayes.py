@@ -8,7 +8,7 @@ from sklearn.svm import SVC, LinearSVC,NuSVC
 import json
 
 
-with open('data.txt') as json_file:
+with open('data.json') as json_file:
     data = json.load(json_file)
      
  
@@ -18,6 +18,8 @@ political_content["false"] = [
     + "While appearing on South African Broadcast Corporation (SABC) on Wednesday, Bobi Wine said whereas he does not agree with homosexuals, he respects their rights."
     + "“I believe that one has the responsibility of guarding the rights of all citizens of those who are like you and those that are not like you. I believe that as a leader, a high level of tolerance is required to make sure the nation comes together,” Bobi Wine said."
     + "He is in South Africa for the Freedom Foundation Africa’s ‘Africa Freedom Award ceremony 2019’ due on Friday, December 6.",
+
+    
     "Ugandan artist Bobi Wine writes songs with blatant homophobic lyrics and calls for gay people to be attacked, or killed."
     + "The UK 2008, Criminal Justice and Immigration Act, makes a new criminal offence of ‘incitement to homophobic hatred. We strongly believe that allowing an act to perform that includes such lyrics as: 'Fire will burn the batty man. Burn all the batty man. All Ugandans get behind me and fight the batty man’ is incitement to homophobic hate and therefore in breach of the 2008 Act and should not be allowed to go ahead."
     + "Allowing such an artist to appear in public is clearly going to raise tensions and we'd respectfully request that his appearance within the UK is cancelled immediately."
