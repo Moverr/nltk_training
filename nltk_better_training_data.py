@@ -47,15 +47,14 @@ documents = []
 for sentence in short_pos.split('\n'):
     documents.append((sentence,"pos"))
     print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
-
-political_content = {}
-with open('data.json') as json_file:
-    political_content = json.load(json_file)
-     
  
+all_words = []
+
+short_pos
 # words = ""
 
 # all_words = []
+
 # # // [w.lower() for w in movie_reviews.words()]
 
 # x = []
