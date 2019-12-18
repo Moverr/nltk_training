@@ -60,6 +60,13 @@ all_words = []
 short_pos_words = nltk.word_tokenize(short_pos)
 short_neg_words = nltk.word_tokenize(short_neg)
 
+for w in short_pos_words:
+    all_words.append(w.lower())
+
+for w in short_neg_words:
+    all_words.append(w.lower())
+
+
 # short_pos_words = word
 # words = ""
 
