@@ -38,8 +38,8 @@ class VoteClassifier(ClassifierI):
 
 
 
-short_pos = open("positive.txt").read()
-short_neg = open("negative.txt").read()
+short_pos = open("positive.txt","r").read()
+short_neg = open("negative.txt","r").read()
 
 
 documents = []
@@ -55,8 +55,12 @@ for sentence in short_neg.split('\n'):
 
 
 all_words = []
+# Word tokenizing is the art of breaking up a sentence into words list 
+# split a sentence into words 
+short_pos_words = nltk.word_tokenize(short_pos)
+short_neg_words = nltk.word_tokenize(short_neg)
 
-short_pos
+# short_pos_words = word
 # words = ""
 
 # all_words = []
