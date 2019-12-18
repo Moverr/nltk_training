@@ -46,8 +46,14 @@ documents = []
 
 for sentence in short_pos.split('\n'):
     documents.append((sentence,"pos"))
-    print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
- 
+    # print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
+
+
+for sentence in short_neg.split('\n'):
+    documents.append((sentence,"neg"))
+    # print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
+
+
 all_words = []
 
 short_pos
