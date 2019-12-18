@@ -37,6 +37,10 @@ class VoteClassifier(ClassifierI):
 
 
 
+
+short_pos = open("positive.txt")
+short_neg = open("negative.txt")
+
 political_content = {}
 with open('data.json') as json_file:
     political_content = json.load(json_file)
