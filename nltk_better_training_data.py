@@ -66,6 +66,12 @@ for w in short_pos_words:
 for w in short_neg_words:
     all_words.append(w.lower())
 
+all_words = nltk.FreqDist(all_words)
+
+
+# Print all workds 
+print(all_words)
+
 
 # short_pos_words = word
 # words = ""
