@@ -68,9 +68,14 @@ for w in short_neg_words:
 
 all_words = nltk.FreqDist(all_words)
 
-
 # Print all workds 
 print(all_words)
+
+
+# //I have all the words in all my sample data  
+word_features  = list(all_words.keys())[:5000]
+print(word_features)
+
 
 
 # short_pos_words = word
