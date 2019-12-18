@@ -7,7 +7,36 @@ from sklearn.linear_model import  LogisticRegression, SGDClassifier
 from sklearn.svm import SVC, LinearSVC,NuSVC
 import json
 
- 
+
+
+
+from nltk.classify import ClassifierI
+from statistics import mode
+
+
+class VoteClassifier(ClassifierI):
+    # List of classifiers passsed to this 
+    def __init__(self,*classifiers):
+        self._classifiers = classifiers
+    def classify(self,features):
+        votes = []
+        for c  in self._classifiers:
+            v = c.classify(features)
+            votes.append(v)
+        return mode(votes)
+    def confidence(self, features):
+        votes = []
+        for c in self._classifiers:
+            v = c.classify(features)
+            votes.append(v)
+        choice_votes = votes.count(mode(votes))
+        conf = choice_votes/len(votes)
+        return conf
+    def predict(self,text):
+        pass
+
+
+
 political_content = {}
 with open('data.json') as json_file:
     political_content = json.load(json_file)
@@ -121,33 +150,6 @@ print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, te
 
  
 print("---------------\n")
-
-
-from nltk.classify import ClassifierI
-from statistics import mode
-
-
-class VoteClassifier(ClassifierI):
-    # List of classifiers passsed to this 
-    def __init__(self,*classifiers):
-        self._classifiers = classifiers
-    def classify(self,features):
-        votes = []
-        for c  in self._classifiers:
-            v = c.classify(features)
-            votes.append(v)
-        return mode(votes)
-    def confidence(self, features):
-        votes = []
-        for c in self._classifiers:
-            v = c.classify(features)
-            votes.append(v)
-        choice_votes = votes.count(mode(votes))
-        conf = choice_votes/len(votes)
-        return conf
-    def predict(self,text):
-        pass
-
 
 voted_classifier = VoteClassifier(classifier,MNB_Classifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,SVC_classifier,NuSVC_classifier)
 print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, testing_set)) * 100)
