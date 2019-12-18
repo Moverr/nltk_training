@@ -38,15 +38,21 @@ class VoteClassifier(ClassifierI):
 
 
 
-short_pos = open("positive.txt")
-short_neg = open("negative.txt")
+short_pos = open("positive.txt").read()
+short_neg = open("negative.txt").read()
+
+
+documents = []
+
+for sentence in short_pos.split('\n'):
+    documents.append((sentence,"pos"))
+    print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
 
 political_content = {}
 with open('data.json') as json_file:
     political_content = json.load(json_file)
      
  
-documents = []
 words = ""
 
 all_words = []
