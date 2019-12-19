@@ -56,6 +56,8 @@ for sentence in short_neg.split('\n'):
     negative_corpus.append(sentence) 
 
 
+# // add to the turple, postive and negative corpus and move  
+
 
 # print(documents)
 from sklearn.feature_extraction.text import CountVectorizer
@@ -64,8 +66,17 @@ X = vectorizer.fit_transform(posive_corpus)
 
 Y= vectorizer.fit_transform(negative_corpus)
 
+documents.append((X,1))
+documents.append((Y,0))
 
-print("{}".format(X))
+
+
+print("{}".format(documents))
+
+
+vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(2, 2))
+# X2 = vectorizer2.fit_transform(corpus)
+print(vectorizer.get_feature_names())
 
 
 
