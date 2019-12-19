@@ -77,6 +77,14 @@ word_features  = list(all_words.keys())[:5000]
 print(word_features)
 
 
+def find_features(document):
+    words = set(document)
+    features = {}
+    for w in word_features:
+        features[w] = (w in words)
+
+    return features
+
 
 # short_pos_words = word
 # words = ""
