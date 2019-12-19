@@ -5,6 +5,7 @@ from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
 from sklearn.linear_model import  LogisticRegression, SGDClassifier
 from sklearn.svm import SVC, LinearSVC,NuSVC
+from sklearn.ensemble import RandomForestClassifier
 import json
 
 
@@ -81,13 +82,24 @@ documents.append(Y)
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7 )
 X = vectorizer.fit_transform(posive_corpus)
+Y = vectorizer.fit_transform(negative_corpus)
 
-print("{}".format(X))
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
+
+print("{}".format(X_test))
 
 # vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(2, 2))
 # X2 = vectorizer2.fit_transform(corpus)
 # print(vectorizer.get_feature_names())
 
+
+classifier = RandomForestClassifier(n_estimators=1000, random_state=0)
+# classifier.fit(X_train, y_train) 
+
+
+print("Debugging {} ".format(classifier))
 
 
 # for sentence in short_neg.split('\n'):
