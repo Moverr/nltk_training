@@ -89,8 +89,41 @@ def find_features(document):
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 random.shuffle(featuresets)
 
-training_set = featuresets[:10000]
-testing_set = featuresets[10000:]
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7)
+# X = vectorizer.fit_transform(documents.lower())
+
+
+# training_set = x[:1000]
+# testing_set = x[1000:]
+
+
+# BernoulliNB = SklearnClassifier(BernoulliNB())
+# BernoulliNB.train(training_set)
+# print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, testing_set)) * 100)
+
+ 
+# LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+# LogisticRegression_classifier.train(training_set)
+# print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, testing_set)) * 100)
+
+SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
+SGDClassifier_classifier.train(training_set)
+print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, testing_set)) * 100)
+
+SVC_classifier = SklearnClassifier(SVC())
+SVC_classifier.train(training_set)
+print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, testing_set)) * 100)
+
+LinearSVC_classifier = SklearnClassifier(LinearSVC())
+LinearSVC_classifier.train(training_set)
+print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, testing_set)) * 100)
+
+NuSVC_classifier = SklearnClassifier(NuSVC())
+NuSVC_classifier.train(training_set)
+print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
+ 
+
 
 
 
