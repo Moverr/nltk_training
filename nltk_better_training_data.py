@@ -86,6 +86,10 @@ def find_features(document):
     return features
 
 
+featuresets = [(find_features(rev), category) for (rev, category) in documents]
+random.shuffle(featuresets)
+
+
 # short_pos_words = word
 # words = ""
 
@@ -134,6 +138,7 @@ def find_features(document):
 
 # print("------- FEATURE SETS ::::: ------------------- ") 
 # featuresets = [(find_features(rev), category) for (rev, category) in documents]
+
 # print(featuresets)
 
 
