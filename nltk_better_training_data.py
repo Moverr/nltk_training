@@ -95,9 +95,12 @@ print("{}".format(X_test))
 # print(vectorizer.get_feature_names())
 
 
-classifier = RandomForestClassifier(n_estimators=1000, random_state=0)
-# classifier.fit(X_train, y_train) 
 
+classifier = RandomForestClassifier(n_estimators=1000, random_state=0)
+classifier.fit(X_train, y_train) 
+
+
+# from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
 print("Debugging {} ".format(classifier))
 
