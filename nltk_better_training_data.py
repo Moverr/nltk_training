@@ -66,17 +66,21 @@ X = vectorizer.fit_transform(posive_corpus)
 
 Y= vectorizer.fit_transform(negative_corpus)
 
-documents.append((X,1))
-documents.append((Y,0))
+documents.append(X)
+documents.append(Y)
 
 
+# create a dictionary
+doc = {}
+doc[0] = X
+doc[1] = Y
 
-print("{}".format(documents))
+print("{}".format(doc))
 
 
 vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(2, 2))
 # X2 = vectorizer2.fit_transform(corpus)
-print(vectorizer.get_feature_names())
+# print(vectorizer.get_feature_names())
 
 
 
