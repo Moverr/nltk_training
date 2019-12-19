@@ -44,54 +44,77 @@ short_neg = open("negative.txt","r").read()
 
 documents = []
 
-for sentence in short_pos.split('\n'):
-    documents.append((sentence,"pos"))
-    # print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
+
+posive_corpus = []
+negative_corpus = []
+
+for sentence in short_pos.split('\n'): 
+    posive_corpus.append(sentence) 
 
 
-for sentence in short_neg.split('\n'):
-    documents.append((sentence,"neg"))
-    # print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
+for sentence in short_neg.split('\n'): 
+    negative_corpus.append(sentence) 
 
 
-all_words = []
-# Word tokenizing is the art of breaking up a sentence into words list 
-# split a sentence into words 
-short_pos_words = nltk.word_tokenize(short_pos)
-short_neg_words = nltk.word_tokenize(short_neg)
 
-for w in short_pos_words:
-    all_words.append(w.lower())
-
-for w in short_neg_words:
-    all_words.append(w.lower())
-
-all_words = nltk.FreqDist(all_words)
-
-# Print all workds 
-print(all_words)
-
-
-# //I have all the words in all my sample data  
-word_features  = list(all_words.keys())[:5000]
-print(word_features)
-
-
-def find_features(document):
-    words = set(document)
-    features = {}
-    for w in word_features:
-        features[w] = (w in words)
-
-    return features
-
-
-featuresets = [(find_features(rev), category) for (rev, category) in documents]
-random.shuffle(featuresets)
-
+# print(documents)
 from sklearn.feature_extraction.text import CountVectorizer
-vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7)
-# X = vectorizer.fit_transform(documents.lower())
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(posive_corpus)
+
+Y= vectorizer.fit_transform(negative_corpus)
+
+
+print("{}".format(X))
+
+
+
+# for sentence in short_neg.split('\n'):
+#     documents.append((sentence,"neg"))
+#     # print("::::::::::::::::::::::::::::::::::::::::::::::::::: \n  {}".format(sentence))
+
+
+
+# # //todo: if we have a document, can we then convert ==
+
+# all_words = []
+# # Word tokenizing is the art of breaking up a sentence into words list 
+# # split a sentence into words 
+# short_pos_words = nltk.word_tokenize(short_pos)
+# short_neg_words = nltk.word_tokenize(short_neg)
+
+# for w in short_pos_words:
+#     all_words.append(w.lower())
+
+# for w in short_neg_words:
+#     all_words.append(w.lower())
+
+# all_words = nltk.FreqDist(all_words)
+
+# # Print all workds 
+# print(all_words)
+
+
+# # //I have all the words in all my sample data  
+# word_features  = list(all_words.keys())[:5000]
+# print(word_features)
+
+
+# def find_features(document):
+#     words = set(document)
+#     features = {}
+#     for w in word_features:
+#         features[w] = (w in words)
+
+#     return features
+
+
+# featuresets = [(find_features(rev), category) for (rev, category) in documents]
+# random.shuffle(featuresets)
+
+# from sklearn.feature_extraction.text import CountVectorizer
+# vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7)
+# # X = vectorizer.fit_transform(documents.lower())
 
 
 # training_set = x[:1000]
@@ -107,56 +130,56 @@ vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7)
 # LogisticRegression_classifier.train(training_set)
 # print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, testing_set)) * 100)
 
-SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
-SGDClassifier_classifier.train(training_set)
-print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, testing_set)) * 100)
+# SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
+# SGDClassifier_classifier.train(training_set)
+# print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, testing_set)) * 100)
 
-SVC_classifier = SklearnClassifier(SVC())
-SVC_classifier.train(training_set)
-print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, testing_set)) * 100)
+# SVC_classifier = SklearnClassifier(SVC())
+# SVC_classifier.train(training_set)
+# print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, testing_set)) * 100)
 
-LinearSVC_classifier = SklearnClassifier(LinearSVC())
-LinearSVC_classifier.train(training_set)
-print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, testing_set)) * 100)
+# LinearSVC_classifier = SklearnClassifier(LinearSVC())
+# LinearSVC_classifier.train(training_set)
+# print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, testing_set)) * 100)
 
-NuSVC_classifier = SklearnClassifier(NuSVC())
-NuSVC_classifier.train(training_set)
-print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
+# NuSVC_classifier = SklearnClassifier(NuSVC())
+# NuSVC_classifier.train(training_set)
+# print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
  
 
 
 
 
-# short_pos_words = word
-# words = ""
+# # short_pos_words = word
+# # words = ""
 
-# all_words = []
+# # all_words = []
 
-# # // [w.lower() for w in movie_reviews.words()]
+# # # // [w.lower() for w in movie_reviews.words()]
 
-# x = []
-# for category in political_content.keys():
+# # x = []
+# # for category in political_content.keys():
 
-#     for content in political_content[category]:
-#         documents.append((content.split(" "), category))
-#         x += content.split(" ")
-#     all_words = x
+# #     for content in political_content[category]:
+# #         documents.append((content.split(" "), category))
+# #         x += content.split(" ")
+# #     all_words = x
 
-# # word_features  = words.split(" ")
-
-
-# random.shuffle(documents)
-
-# all_words = nltk.FreqDist(all_words)
-
-# # Print all workds 
-# print(all_words)
-
-# word_features = list(all_words.keys())[:3000]
+# # # word_features  = words.split(" ")
 
 
-# print("Word Features \n ")
-# print(set(word_features))
+# # random.shuffle(documents)
+
+# # all_words = nltk.FreqDist(all_words)
+
+# # # Print all workds 
+# # print(all_words)
+
+# # word_features = list(all_words.keys())[:3000]
+
+
+# # print("Word Features \n ")
+# # print(set(word_features))
 
 
 # def find_features(document):

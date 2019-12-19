@@ -67,6 +67,4 @@ print("Pass and Go \n")
 featuresets = [(find_features(rev),category) for (rev,category) in documents[:1] ]
 print(featuresets)
 
-
-train_set = wordss[:35]
-test_set = words[35:]
+ 
