@@ -39,7 +39,7 @@ def get_tweets_for_model(cleaned_tokens_list):
         yield dict([token, True] for token in tweet_tokens)
 
 if __name__ == "__main__":
-
+#   this is where the magic is begininig   
     positive_tweets = twitter_samples.strings('positive_tweets.json')
     negative_tweets = twitter_samples.strings('negative_tweets.json')
     # text = twitter_samples.strings('tweets.20150430-223406.json')
