@@ -70,15 +70,21 @@ documents.append(X)
 documents.append(Y)
 
 
-# create a dictionary
-doc = {}
-doc[0] = X
-doc[1] = Y
+# # create a dictionary
+# doc = {}
+# doc[0] = X
+# doc[1] = Y
 
-print("{}".format(doc))
+# print("{}".format(doc))
 
 
-vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(2, 2))
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7 )
+X = vectorizer.fit_transform(posive_corpus)
+
+print("{}".format(X))
+
+# vectorizer2 = CountVectorizer(analyzer='word', ngram_range=(2, 2))
 # X2 = vectorizer2.fit_transform(corpus)
 # print(vectorizer.get_feature_names())
 
