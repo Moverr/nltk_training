@@ -89,6 +89,10 @@ def find_features(document):
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 random.shuffle(featuresets)
 
+training_set = featuresets[:10000]
+testing_set = featuresets[10000:]
+
+
 
 # short_pos_words = word
 # words = ""
