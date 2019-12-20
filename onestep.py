@@ -153,8 +153,10 @@ if __name__ == "__main__":
 
     random.shuffle(dataset)
 
-    train_data = dataset[:10]
-    test_data = dataset[10:]
+    print(len(dataset))
+
+    train_data = dataset[:5]
+    test_data = dataset[5:]
 
     # Naive Bayes Classifier 
 
@@ -174,13 +176,17 @@ if __name__ == "__main__":
 
 
 
-    classifier = SklearnClassifier(MultinomialNB())
-    classifier.train(train_data)
-    print("Accuracy is:", classify.accuracy(classifier, test_data))
+    MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
+    MultinomialNBclassifier.train(train_data)
+    print("\nMultinomialNB Accuracy is:", classify.accuracy(MultinomialNBclassifier, test_data))
 
       
 
+    # GaussianNBclassifier = SklearnClassifier(GaussianNB())
+    # GaussianNBclassifier.train(train_data)
+    # print("\nGaussianNB Accuracy is:", classify.accuracy(GaussianNBclassifier, test_data))
 
+ 
 
 
     classifier = NaiveBayesClassifier.train(train_data)
@@ -203,9 +209,9 @@ if __name__ == "__main__":
 
 
 
-classifier = SklearnClassifier(GaussianNB())
-classifier.train(train_data)
-print("Accuracy is:", classify.accuracy(classifier, test_data))
+# classifier = SklearnClassifier(GaussianNB())
+# classifier.train(train_data)
+# print("Accuracy is:", classify.accuracy(classifier, test_data))
 
 
 
@@ -217,30 +223,30 @@ print("Accuracy is:", classify.accuracy(classifier, test_data))
 #       (nltk.classify.accuracy(GaussianNB, testing_set)) * 100)
 
 
-BernoulliNB = SklearnClassifier(BernoulliNB())
-BernoulliNB.train(train_data)
-print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, test_data)) * 100)
+# BernoulliNB = SklearnClassifier(BernoulliNB())
+# BernoulliNB.train(train_data)
+# print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, test_data)) * 100)
 
  
-LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
-LogisticRegression_classifier.train(train_data)
-print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
+# LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+# LogisticRegression_classifier.train(train_data)
+# print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
 
-SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
-SGDClassifier_classifier.train(train_data)
-print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, test_data)) * 100)
+# SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
+# SGDClassifier_classifier.train(train_data)
+# print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, test_data)) * 100)
 
-SVC_classifier = SklearnClassifier(SVC())
-SVC_classifier.train(train_data)
-print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, test_data)) * 100)
+# SVC_classifier = SklearnClassifier(SVC())
+# SVC_classifier.train(train_data)
+# print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, test_data)) * 100)
 
-LinearSVC_classifier = SklearnClassifier(LinearSVC())
-LinearSVC_classifier.train(train_data)
-print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
+# LinearSVC_classifier = SklearnClassifier(LinearSVC())
+# LinearSVC_classifier.train(train_data)
+# print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
 
-NuSVC_classifier = SklearnClassifier(NuSVC())
-NuSVC_classifier.train(train_data)
-print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, test_data)) * 100)
+# NuSVC_classifier = SklearnClassifier(NuSVC())
+# NuSVC_classifier.train(train_data)
+# print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, test_data)) * 100)
  
 
  
