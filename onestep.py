@@ -53,17 +53,25 @@ if __name__ == "__main__":
     with open('positive.json') as f:
         data = json.load(f)
     
-    print(data['False'])
+    print(data['False'][0])
 
-    positive_tweets = twitter_samples.strings('positive_tweets.json')
-    negative_tweets = twitter_samples.strings('negative_tweets.json')
+    positive_tweets  = data['True']
+    negative_tweets  = data['False']
+    
+
+    # positive_tweets = twitter_samples.strings('positive_tweets.json')
+    # negative_tweets = twitter_samples.strings('negative_tweets.json')
     # text = twitter_samples.strings('tweets.20150430-223406.json')
-    tweet_tokens = twitter_samples.tokenized('positive_tweets.json')[0]
+    positive_tweet_tokens =  nltk.word_tokenize(positive_tweets)
+    negative_tweet_tokens =  nltk.word_tokenize(negative_tweets)
+    
+
+    # twitter_samples.tokenized('positive_tweets.json')[0]
 
     stop_words = stopwords.words('english')
 
-    positive_tweet_tokens = twitter_samples.tokenized('positive_tweets.json')
-    negative_tweet_tokens = twitter_samples.tokenized('negative_tweets.json')
+    # positive_tweet_tokens = twitter_samples.tokenized('positive_tweets.json')
+    # negative_tweet_tokens = twitter_samples.tokenized('negative_tweets.json')
 
     positive_cleaned_tokens_list = []
     negative_cleaned_tokens_list = []
