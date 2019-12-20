@@ -49,17 +49,11 @@ def get_tweets_for_model(cleaned_tokens_list):
 if __name__ == "__main__":
     #   this is where the magic is begininig
  
+    # data ={}
+    with open('positive.json') as f:
+        data = json.load(f)
     
-   with open('positive.json') as f:
-    data = json.load(f)
-
-   obj = json.loads(data)
-
-
-    # obj = json.load(data)
-
-    # print("{}".format(obj))
-
+    print(data['False'])
 
     positive_tweets = twitter_samples.strings('positive_tweets.json')
     negative_tweets = twitter_samples.strings('negative_tweets.json')
