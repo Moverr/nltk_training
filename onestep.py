@@ -178,7 +178,7 @@ if __name__ == "__main__":
 
     MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
     MultinomialNBclassifier.train(train_data)
-    print("\nMultinomialNB Accuracy is:", classify.accuracy(MultinomialNBclassifier, test_data))
+    print("\nMultinomialNB Accuracy is:",  (classify.accuracy(MultinomialNBclassifier, test_data)) * 100)
 
       
 
@@ -187,6 +187,17 @@ if __name__ == "__main__":
     # print("\nGaussianNB Accuracy is:", classify.accuracy(GaussianNBclassifier, test_data))
 
  
+
+    BernoulliNB = SklearnClassifier(BernoulliNB())
+    BernoulliNB.train(train_data)
+    print("BernoulliNB Algo Accuracy: ",      (nltk.classify.accuracy(BernoulliNB, test_data)) * 100)
+
+
+
+    LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+    LogisticRegression_classifier.train(train_data)
+    print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
+
 
 
     classifier = NaiveBayesClassifier.train(train_data)
