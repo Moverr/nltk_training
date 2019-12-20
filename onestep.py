@@ -58,10 +58,13 @@ if __name__ == "__main__":
     positive_tweets  = data['True']
     negative_tweets  = data['False']
     
-    all_positive_words = []
+    positive_tweet_tokens = []
 
-    for content in positive_tweets:
-        pass
+    for sentence in positive_tweets:
+        # todo:  tockenize this then append  
+        positive_tweet_tokens.append(nltk.word_tokenize(sentence)) 
+
+        # print("\n ------ \n {}".format(sentence))
 
     # todo : loop through the issues, and tokenize them 
 
@@ -69,7 +72,7 @@ if __name__ == "__main__":
     # negative_tweets = twitter_samples.strings('negative_tweets.json')
     # text = twitter_samples.strings('tweets.20150430-223406.json')
 
-    
+
     # positive_tweet_tokens =  nltk.word_tokenize(positive_tweets)
     # negative_tweet_tokens =  nltk.word_tokenize(negative_tweets)
     
