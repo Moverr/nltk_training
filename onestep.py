@@ -49,9 +49,12 @@ def get_tweets_for_model(cleaned_tokens_list):
 if __name__ == "__main__":
     #   this is where the magic is begininig
  
-    data = ''
-    with open('positive.json') as json_file:
-        data = json.load(json_file)
+    
+    with open('positive.json','r') as json_file:
+        data  = json_file.read()
+         
+
+    obj = json.load(data)
 
     print("{}".format(data))
 
