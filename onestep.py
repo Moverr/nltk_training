@@ -198,18 +198,7 @@ if __name__ == "__main__":
     LogisticRegression_classifier.train(train_data)
     print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
 
-
-    # GaussianNB = SklearnClassifier(GaussianNB())
-    # GaussianNB.train(train_data)
-    # print("GaussianNB Algo Accuracy: ",
-    #     (nltk.classify.accuracy(GaussianNB, test_data)) * 100)
-
-
-    
-    LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
-    LogisticRegression_classifier.train(train_data)
-    print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
-
+ 
     SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
     SGDClassifier_classifier.train(train_data)
     print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, test_data)) * 100)
