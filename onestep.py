@@ -211,7 +211,11 @@ if __name__ == "__main__":
     LinearSVC_classifier.train(train_data)
     print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
 
-     
+    
+    NuSVC_classifier = SklearnClassifier(NuSVC())
+    NuSVC_classifier.train(training_set)
+    print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
+      
 
 
     classifier = NaiveBayesClassifier.train(train_data)
@@ -220,12 +224,19 @@ if __name__ == "__main__":
 
     print(classifier.show_most_informative_features(10))
 
-    custom_tweet = " I went to church"
+    custom_tweet = " Bobiwine is contesting for presidency in 2021"
 
     custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
     print(custom_tweet, classifier.classify(
         dict([token, True] for token in custom_tokens)))
+
+
+
+
+voted_classifier = VoteClassifier(classifier,MultinomialNBclassifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,LinearSVC_classifier,NuSVC_classifier)
+print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, testing_set)) * 100)
+
 
 
 
