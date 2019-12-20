@@ -52,7 +52,9 @@ if __name__ == "__main__":
     
    with open('positive.json') as f:
     data = json.load(f)
-         
+
+   obj = json.loads(data)
+
 
     # obj = json.load(data)
 
