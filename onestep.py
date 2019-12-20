@@ -50,13 +50,13 @@ if __name__ == "__main__":
     #   this is where the magic is begininig
  
     
-    with open('positive.json','r') as json_file:
-        data  = json_file.read()
+   with open('positive.json') as f:
+    data = json.load(f)
          
 
-    obj = json.load(data)
+    # obj = json.load(data)
 
-    print("{}".format(data))
+    # print("{}".format(obj))
 
 
     positive_tweets = twitter_samples.strings('positive_tweets.json')
