@@ -199,6 +199,31 @@ if __name__ == "__main__":
     print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
 
 
+    # GaussianNB = SklearnClassifier(GaussianNB())
+    # GaussianNB.train(train_data)
+    # print("GaussianNB Algo Accuracy: ",
+    #     (nltk.classify.accuracy(GaussianNB, test_data)) * 100)
+
+
+    
+    LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+    LogisticRegression_classifier.train(train_data)
+    print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(LogisticRegression_classifier, test_data)) * 100)
+
+    SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
+    SGDClassifier_classifier.train(train_data)
+    print("SGDClassifier Algo Accuracy: ",      (nltk.classify.accuracy(SGDClassifier_classifier, test_data)) * 100)
+
+    SVC_classifier = SklearnClassifier(SVC())
+    SVC_classifier.train(train_data)
+    print("SVC Algo Accuracy: ",      (nltk.classify.accuracy(SVC_classifier, test_data)) * 100)
+
+    LinearSVC_classifier = SklearnClassifier(LinearSVC())
+    LinearSVC_classifier.train(train_data)
+    print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
+
+     
+
 
     classifier = NaiveBayesClassifier.train(train_data)
 
@@ -206,7 +231,7 @@ if __name__ == "__main__":
 
     print(classifier.show_most_informative_features(10))
 
-    custom_tweet = " defense of LGBT rights"
+    custom_tweet = " I went to church"
 
     custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
