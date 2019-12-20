@@ -158,24 +158,7 @@ if __name__ == "__main__":
     train_data = dataset[:5]
     test_data = dataset[5:]
 
-    # Naive Bayes Classifier 
-
-    classifier = NaiveBayesClassifier.train(train_data)
-
-    print("Accuracy is:", classify.accuracy(classifier, test_data))
-
-    print(classifier.show_most_informative_features(10))
-
-    custom_tweet = " defense of LGBT rights"
-
-    custom_tokens = remove_noise(word_tokenize(custom_tweet))
-
-    print(custom_tweet, classifier.classify(
-        dict([token, True] for token in custom_tokens)))
-
-
-
-
+ 
     MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
     MultinomialNBclassifier.train(train_data)
     print("\nMultinomialNB Accuracy is:",  (classify.accuracy(MultinomialNBclassifier, test_data)) * 100)
@@ -213,8 +196,8 @@ if __name__ == "__main__":
 
     
     NuSVC_classifier = SklearnClassifier(NuSVC())
-    NuSVC_classifier.train(training_set)
-    print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, testing_set)) * 100)
+    NuSVC_classifier.train(train_data)
+    print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, test_data)) * 100)
       
 
 
@@ -235,7 +218,7 @@ if __name__ == "__main__":
 
 
 voted_classifier = VoteClassifier(classifier,MultinomialNBclassifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,LinearSVC_classifier,NuSVC_classifier)
-print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, testing_set)) * 100)
+print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, test_data)) * 100)
 
 
 
