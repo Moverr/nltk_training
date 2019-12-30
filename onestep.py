@@ -18,7 +18,7 @@ import json
 from nltk.classify import ClassifierI
 from statistics import mode
 
- 
+
 class VoteClassifier(ClassifierI):
     # List of classifiers passsed to this
     def __init__(self, *classifiers):
@@ -156,87 +156,72 @@ if __name__ == "__main__":
     test_data = dataset[5:]
 
 
-
 names = ["MultinomialNBclassifier", "BernoulliNB", "LogisticRegression_classifier", "SGDClassifier_classifier ",
          "SVC_classifier", "LinearSVC_classifier", "NaiveBayesClassifier"]
 
+classification = [
+    SklearnClassifier(MultinomialNB()),
+    SklearnClassifier(BernoulliNB()),
+    SklearnClassifier(LogisticRegression()),
+    SklearnClassifier(SGDClassifier()),
 
-    classification  = [
-        SklearnClassifier(MultinomialNB()),
-        SklearnClassifier(BernoulliNB()),
-        SklearnClassifier(LogisticRegression()),
-        SklearnClassifier(SGDClassifier()),
-        
-        SklearnClassifier(LinearSVC()),
-        SklearnClassifier(NuSVC(gamma='auto')),
+    SklearnClassifier(LinearSVC()),
+    SklearnClassifier(NuSVC(gamma='auto')),
+    NaiveBayesClassifier()
+]
 
-        
-        SklearnClassifier(NuSVC(gamma='auto')),
-        SklearnClassifier(NuSVC(gamma='auto')),
-        
-        
-        GaussianProcessClassifier(1.0 * RBF(1.0)),
-        DecisionTreeClassifier(max_depth=5),
-        RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
-        MLPClassifier(alpha=1, max_iter=1000),
-        AdaBoostClassifier(),
-        GaussianNB(),
-        QuadraticDiscriminantAnalysis()]
+MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
+MultinomialNBclassifier.train(train_data)
+print("\nMultinomialNB Accuracy is:",
+      (classify.accuracy(MultinomialNBclassifier, test_data)) * 100)
 
+# GaussianNBclassifier = SklearnClassifier(GaussianNB())
+# GaussianNBclassifier.train(train_data)
+# print("\nGaussianNB Accuracy is:", classify.accuracy(GaussianNBclassifier, test_data))
 
+BernoulliNB = SklearnClassifier(BernoulliNB())
+BernoulliNB.train(train_data)
+print("BernoulliNB Algo Accuracy: ",
+      (nltk.classify.accuracy(BernoulliNB, test_data)) * 100)
 
-    MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
-    MultinomialNBclassifier.train(train_data)
-    print("\nMultinomialNB Accuracy is:",
-          (classify.accuracy(MultinomialNBclassifier, test_data)) * 100)
+LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+LogisticRegression_classifier.train(train_data)
+print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(
+    LogisticRegression_classifier, test_data)) * 100)
 
-    # GaussianNBclassifier = SklearnClassifier(GaussianNB())
-    # GaussianNBclassifier.train(train_data)
-    # print("\nGaussianNB Accuracy is:", classify.accuracy(GaussianNBclassifier, test_data))
+SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
+SGDClassifier_classifier.train(train_data)
+print("SGDClassifier Algo Accuracy: ",
+      (nltk.classify.accuracy(SGDClassifier_classifier, test_data)) * 100)
 
-    BernoulliNB = SklearnClassifier(BernoulliNB())
-    BernoulliNB.train(train_data)
-    print("BernoulliNB Algo Accuracy: ",
-          (nltk.classify.accuracy(BernoulliNB, test_data)) * 100)
+SVC_classifier = SklearnClassifier(SVC())
+SVC_classifier.train(train_data)
+print("SVC Algo Accuracy: ",
+      (nltk.classify.accuracy(SVC_classifier, test_data)) * 100)
 
-    LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
-    LogisticRegression_classifier.train(train_data)
-    print("LogisticRegression Algo Accuracy: ",      (nltk.classify.accuracy(
-        LogisticRegression_classifier, test_data)) * 100)
+LinearSVC_classifier = SklearnClassifier(LinearSVC())
+LinearSVC_classifier.train(train_data)
+print("LinearSVC Algo Accuracy: ",
+      (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
 
-    SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
-    SGDClassifier_classifier.train(train_data)
-    print("SGDClassifier Algo Accuracy: ",
-          (nltk.classify.accuracy(SGDClassifier_classifier, test_data)) * 100)
+NuSVC_classifier = SklearnClassifier(NuSVC(gamma='auto'))
 
-    SVC_classifier = SklearnClassifier(SVC())
-    SVC_classifier.train(train_data)
-    print("SVC Algo Accuracy: ",
-          (nltk.classify.accuracy(SVC_classifier, test_data)) * 100)
+NuSVC_classifier.train(train_data)
+print("NuSVC Algo Accuracy: ",
+      (nltk.classify.accuracy(NuSVC_classifier, test_data)) * 100)
 
-    LinearSVC_classifier = SklearnClassifier(LinearSVC())
-    LinearSVC_classifier.train(train_data)
-    print("LinearSVC Algo Accuracy: ",
-          (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
+classifier = NaiveBayesClassifier.train(train_data)
 
-    NuSVC_classifier = SklearnClassifier(NuSVC(gamma='auto'))
+print("Accuracy is:", classify.accuracy(classifier, test_data))
 
-    NuSVC_classifier.train(train_data)
-    print("NuSVC Algo Accuracy: ",
-          (nltk.classify.accuracy(NuSVC_classifier, test_data)) * 100)
+print(classifier.show_most_informative_features(10))
 
-    classifier = NaiveBayesClassifier.train(train_data)
+custom_tweet = " Bobiwine is contesting for presidency in 2021"
 
-    print("Accuracy is:", classify.accuracy(classifier, test_data))
+custom_tokens = remove_noise(word_tokenize(custom_tweet))
 
-    print(classifier.show_most_informative_features(10))
-
-    custom_tweet = " Bobiwine is contesting for presidency in 2021"
-
-    custom_tokens = remove_noise(word_tokenize(custom_tweet))
-
-    print(custom_tweet, classifier.classify(
-        dict([token, True] for token in custom_tokens)))
+print(custom_tweet, classifier.classify(
+    dict([token, True] for token in custom_tokens)))
 
 
 voted_classifier = VoteClassifier(classifier, MultinomialNBclassifier, BernoulliNB,
