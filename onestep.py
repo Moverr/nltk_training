@@ -195,7 +195,8 @@ if __name__ == "__main__":
     print("LinearSVC Algo Accuracy: ",      (nltk.classify.accuracy(LinearSVC_classifier, test_data)) * 100)
 
     
-    NuSVC_classifier = SklearnClassifier(NuSVC())
+    NuSVC_classifier = SklearnClassifier(NuSVC(gamma='scale'))
+ 
     NuSVC_classifier.train(train_data)
     print("NuSVC Algo Accuracy: ",      (nltk.classify.accuracy(NuSVC_classifier, test_data)) * 100)
       
