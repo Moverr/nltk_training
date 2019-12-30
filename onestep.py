@@ -18,11 +18,7 @@ import json
 from nltk.classify import ClassifierI
 from statistics import mode
 
-
-names = ["MultinomialNBclassifier", "BernoulliNB", "LogisticRegression_classifier", "SGDClassifier_classifier ",
-         "SVC_classifier", "LinearSVC_classifier", "NaiveBayesClassifier"]
-
-
+ 
 class VoteClassifier(ClassifierI):
     # List of classifiers passsed to this
     def __init__(self, *classifiers):
@@ -158,6 +154,36 @@ if __name__ == "__main__":
 
     train_data = dataset[:5]
     test_data = dataset[5:]
+
+
+
+names = ["MultinomialNBclassifier", "BernoulliNB", "LogisticRegression_classifier", "SGDClassifier_classifier ",
+         "SVC_classifier", "LinearSVC_classifier", "NaiveBayesClassifier"]
+
+
+    classification  = [
+        SklearnClassifier(MultinomialNB()),
+        SklearnClassifier(BernoulliNB()),
+        SklearnClassifier(LogisticRegression()),
+        SklearnClassifier(SGDClassifier()),
+        
+        SklearnClassifier(LinearSVC()),
+        SklearnClassifier(NuSVC(gamma='auto')),
+
+        
+        SklearnClassifier(NuSVC(gamma='auto')),
+        SklearnClassifier(NuSVC(gamma='auto')),
+        
+        
+        GaussianProcessClassifier(1.0 * RBF(1.0)),
+        DecisionTreeClassifier(max_depth=5),
+        RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
+        MLPClassifier(alpha=1, max_iter=1000),
+        AdaBoostClassifier(),
+        GaussianNB(),
+        QuadraticDiscriminantAnalysis()]
+
+
 
     MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
     MultinomialNBclassifier.train(train_data)
