@@ -166,8 +166,8 @@ classification = [
     SklearnClassifier(SGDClassifier()),
 
     SklearnClassifier(LinearSVC()),
-    SklearnClassifier(NuSVC(gamma='auto')),
-    NaiveBayesClassifier()
+    SklearnClassifier(NuSVC(gamma='auto'))
+    # SklearnClassifier(NaiveBayesClassifier())
 ]
 
 index = 0
