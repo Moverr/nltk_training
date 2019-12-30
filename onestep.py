@@ -4,6 +4,7 @@ from nltk.corpus import twitter_samples, stopwords
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
 from nltk import FreqDist, classify, NaiveBayesClassifier
+from nltk.stem import WordNetLemmatizer
 
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
@@ -52,7 +53,7 @@ class VoteClassifier(ClassifierI):
 
 
 def remove_noise(tweet_tokens, stop_words=()):
-
+    lemmetizer = WordNetLemmatizer()
     cleaned_tokens = []
 
     for token, tag in pos_tag(tweet_tokens):
@@ -71,7 +72,9 @@ def remove_noise(tweet_tokens, stop_words=()):
         token = lemmatizer.lemmatize(token, pos)
 
         if len(token) > 0 and token not in string.punctuation and token.lower() not in stop_words:
-            cleaned_tokens.append(token.lower())
+            # // we are chainge words back to the original flow   
+            lametizedword = lemmetizer.lemmatize(token.lower())
+            cleaned_tokens.append(lametizedword)
     return cleaned_tokens
 
 
