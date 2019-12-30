@@ -170,6 +170,13 @@ classification = [
     NaiveBayesClassifier()
 ]
 
+index = 0
+for classifier_item in classification:
+    classifier_item.train(train_data)
+    print("\n{} Accuracy is:".format(names[index]),
+      (classify.accuracy(classifier_item, test_data)) * 100)
+    index = index + 1
+
 MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
 MultinomialNBclassifier.train(train_data)
 print("\nMultinomialNB Accuracy is:",
