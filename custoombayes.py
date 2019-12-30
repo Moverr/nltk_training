@@ -149,6 +149,9 @@ class VoteClassifier(ClassifierI):
         pass
 
 
+
+# //todo: I want to name the classifier and move  
+
 voted_classifier = VoteClassifier(classifier,MNB_Classifier,BernoulliNB,LogisticRegression_classifier,SGDClassifier_classifier,SVC_classifier,NuSVC_classifier)
 print("Voted Classifier Algo Accuracy: ",      (nltk.classify.accuracy(voted_classifier, testing_set)) * 100)
 

@@ -18,6 +18,9 @@ import json
 from nltk.classify import ClassifierI
 from statistics import mode
 
+index =  0 
+classifier_indexes  = []
+midvote = 0
 
 class VoteClassifier(ClassifierI):
     # List of classifiers passsed to this
@@ -26,10 +29,13 @@ class VoteClassifier(ClassifierI):
 
     def classify(self, features):
         votes = []
+        index =  0 
         for c in self._classifiers:
             v = c.classify(features)
-
+            index  =  index + 1 
             votes.append(v)
+            classifier_indexes.append(index)
+     
         return mode(votes)
 
     def confidence(self, features):
@@ -217,3 +223,6 @@ voted_classifier = VoteClassifier(classifier, MultinomialNBclassifier, Bernoulli
 
 print("Voted Classifier Algo Accuracy: ",
       (nltk.classify.accuracy(voted_classifier, test_data)) * 100)
+
+
+ 
