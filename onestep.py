@@ -19,9 +19,10 @@ import json
 from nltk.classify import ClassifierI
 from statistics import mode
 
-index =  0 
-classifier_indexes  = []
+index = 0
+classifier_indexes = []
 midvote = 0
+
 
 class VoteClassifier(ClassifierI):
     # List of classifiers passsed to this
@@ -30,13 +31,13 @@ class VoteClassifier(ClassifierI):
 
     def classify(self, features):
         votes = []
-        index =  0 
+        index = 0
         for c in self._classifiers:
             v = c.classify(features)
-            index  =  index + 1 
+            index = index + 1
             votes.append(v)
             classifier_indexes.append(index)
-     
+
         return mode(votes)
 
     def confidence(self, features):
@@ -72,7 +73,7 @@ def remove_noise(tweet_tokens, stop_words=()):
         token = lemmatizer.lemmatize(token, pos)
 
         if len(token) > 0 and token not in string.punctuation and token.lower() not in stop_words:
-            # // we are chainge words back to the original flow   
+            # // we are chainge words back to the original flow
             lametizedword = lemmetizer.lemmatize(token.lower())
             cleaned_tokens.append(lametizedword)
     return cleaned_tokens
@@ -98,45 +99,32 @@ if __name__ == "__main__":
 
     print(data['False'][0])
 
-    positive_tweets = data['True']
-    negative_tweets = data['False']
+    positive_data = data['True']
+    negative_data = data['False']
 
-    positive_tweet_tokens = []
-    negative_tweet_tokens = []
+    positive_data_tokens = []
+    negative_data_tokens = []
 
-    for sentence in positive_tweets:
+    for sentence in positive_data:
         # todo:  tockenize this then append
-        positive_tweet_tokens.append(nltk.word_tokenize(sentence))
+        positive_data_tokens.append(nltk.word_tokenize(sentence))
 
-    for sentence in negative_tweets:
+    for sentence in negative_data:
         # todo:  tockenize this then append
-        negative_tweet_tokens.append(nltk.word_tokenize(sentence))
-
-        # print("\n ------ \n {}".format(sentence))
-
-    # todo : loop through the issues, and tokenize them
-
-    # positive_tweets = twitter_samples.strings('positive_tweets.json')
-    # negative_tweets = twitter_samples.strings('negative_tweets.json')
-    # text = twitter_samples.strings('tweets.20150430-223406.json')
-
-    # positive_tweet_tokens =  nltk.word_tokenize(positive_tweets)
-    # negative_tweet_tokens =  nltk.word_tokenize(negative_tweets)
-
-    # twitter_samples.tokenized('positive_tweets.json')[0]
+        negative_data_tokens.append(nltk.word_tokenize(sentence))
 
     stop_words = stopwords.words('english')
 
-    # positive_tweet_tokens = twitter_samples.tokenized('positive_tweets.json')
-    # negative_tweet_tokens = twitter_samples.tokenized('negative_tweets.json')
+    # positive_data_tokens = twitter_samples.tokenized('positive_data.json')
+    # negative_data_tokens = twitter_samples.tokenized('negative_data.json')
 
     positive_cleaned_tokens_list = []
     negative_cleaned_tokens_list = []
 
-    for tokens in positive_tweet_tokens:
+    for tokens in positive_data_tokens:
         positive_cleaned_tokens_list.append(remove_noise(tokens, stop_words))
 
-    for tokens in negative_tweet_tokens:
+    for tokens in negative_data_tokens:
         negative_cleaned_tokens_list.append(remove_noise(tokens, stop_words))
 
     all_pos_words = get_all_words(positive_cleaned_tokens_list)
@@ -226,6 +214,3 @@ voted_classifier = VoteClassifier(classifier, MultinomialNBclassifier, Bernoulli
 
 print("Voted Classifier Algo Accuracy: ",
       (nltk.classify.accuracy(voted_classifier, test_data)) * 100)
-
-
- 
