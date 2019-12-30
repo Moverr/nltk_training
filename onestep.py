@@ -155,27 +155,8 @@ if __name__ == "__main__":
     train_data = dataset[:5]
     test_data = dataset[5:]
 
-
 names = ["MultinomialNBclassifier", "BernoulliNB", "LogisticRegression_classifier", "SGDClassifier_classifier ",
          "SVC_classifier", "LinearSVC_classifier", "NaiveBayesClassifier"]
-
-classification = [
-    SklearnClassifier(MultinomialNB()),
-    SklearnClassifier(BernoulliNB()),
-    SklearnClassifier(LogisticRegression()),
-    SklearnClassifier(SGDClassifier()),
-
-    SklearnClassifier(LinearSVC()),
-    SklearnClassifier(NuSVC(gamma='auto'))
-    # SklearnClassifier(NaiveBayesClassifier())
-]
-
-index = 0
-for classifier_item in classification:
-    classifier_item.train(train_data)
-    print("\n{} Accuracy is:".format(names[index]),
-      (classify.accuracy(classifier_item, test_data)) * 100)
-    index = index + 1
 
 MultinomialNBclassifier = SklearnClassifier(MultinomialNB())
 MultinomialNBclassifier.train(train_data)
